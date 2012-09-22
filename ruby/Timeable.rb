@@ -8,6 +8,11 @@ module Timeable
   @@iterations       = Hash.new(1)
   @@resets_at        = Hash.new(false)
   
+  ######################################################################
+  # time_methods *meths
+  #
+  # times methods given as argument 
+  #
   def time_methods *meths
     meths.each do |meth|
       alias_method "timeable_time_#{meth}", meth
@@ -22,6 +27,12 @@ module Timeable
     end
   end  
   
+  ######################################################################
+  # set_iterations (method, n)
+  #
+  #
+  # to be displayed after n iterations
+  #
   def set_iterations(method, n)
     return false if n < 1
     @@iterations[method] = n
